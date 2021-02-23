@@ -1,0 +1,9 @@
+
+
+The tree is an undirected graph in which any two vertices are connected by exactly one links.
+If each node has at most two children, that tree is named a binary tree.
+A full binary tree is a tree in which every node has either 0 or 2 children.
+A binary search tree (BST) is a tree whose internal nodes store a key greater than all the keys in the node's left subtree
+and less than those in its right subtree.
+
+
