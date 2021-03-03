@@ -1,4 +1,4 @@
-package binary_tree;
+package ds.binary_tree;
 
 import java.util.List;
 

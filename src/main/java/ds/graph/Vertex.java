@@ -1,4 +1,4 @@
-package graph;
+package ds.graph;
 
 public class Vertex {
 

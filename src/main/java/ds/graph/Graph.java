@@ -1,4 +1,4 @@
-package graph;
+package ds.graph;
 
 import java.util.*;
 
@@ -9,14 +9,14 @@ public class Graph {
     }
 
 
-    // the number vertexes of the graph
+    // the number vertexes of the ds.graph
     private int MAX_VERTEX = 20;
     // the array of vertexes
     private Vertex[] vertexList;
     // adjacency matrix
     private int[][] adjMat;
     // adjacency list
-    private Map<Vertex, ArrayDeque<Vertex>> adjLists;
+    private Map<Vertex, List<Vertex>> adjLists;
     // the current number of vertexes
     private int nVertexes;
     // helper
@@ -59,7 +59,7 @@ public class Graph {
     }
 
     void addEdgeInList(Vertex v, Vertex ...linked) {
-        ArrayDeque<Vertex> list = new ArrayDeque<>();
+        ArrayList<Vertex> list = new ArrayList<>();
         list.addAll(Arrays.asList(linked));
         boolean b = adjLists.containsKey(v);
         if (b) {

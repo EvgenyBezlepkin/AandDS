@@ -1,4 +1,6 @@
-package binary_tree;
+package ds.binary_tree;
+
+import ds.Data;
 
 import java.util.Objects;
 

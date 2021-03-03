@@ -1,4 +1,4 @@
-package binary_tree;
+package ds.binary_tree;
 
 import java.util.*;
 
@@ -373,7 +373,7 @@ public class BinaryTree implements Tree {
     }
 
 
-    private  int last_data =0;
+    private  int last_data =Integer.MIN_VALUE;
     public boolean checkBST(Node root) {
         if (root == null) return true;
         if (checkBST(root.getLeftChild())) return true;
