@@ -15,9 +15,12 @@ public class App {
         ll.insert(c);
         //ll.insert(b);
         //System.out.println(ll.hasCycle(ll.getFirst()));
-        ll.insertByPosition(-1, d);
+        ll.insertByPosition(1, d);
         //ll.traverse(ll.getFirst());
         //System.out.println(ll.getNode(5));
-        ll.getNode(b);
+        //ll.getNode(b);
+        //System.out.println(ll.size());
+        ll.deleteNode(b);
+        ll.traverse();
     }
 }

@@ -4,34 +4,45 @@ import java.util.HashSet;
 
 public class LinkedList implements LinkedListInterface {
 
-    private Node first;
+    private Node firstElem;
+    private int size;
 
 
     public LinkedList() {
     }
 
-    public Node getFirst() {
-        return first;
+    public Node getFirstElem() {
+        return firstElem;
     }
 
     public boolean isEmpty() {
-        return first == null;
+        return firstElem == null;
+    }
+
+    public int size() {
+        return size;
     }
 
     public void insert(Node node) {
         if (isEmpty()) {
-            first = node;
+            firstElem = node;
         } else {
-            Node cNode = first;
+            Node cNode = firstElem;
             while (cNode.next != null) {
                 cNode = cNode.next;
             }
             cNode.next = node;
         }
+        size++;
+    }
+
+    public void traverse() {
+        checkCycle();
+        if (isEmpty()) return;
+        traverse(firstElem);
     }
 
     public void traverse(Node node) {
-        checkCycle();
         System.out.println(node);
         if (node.next != null) {
             traverse(node.next);
@@ -51,16 +62,13 @@ public class LinkedList implements LinkedListInterface {
         return false;
     }
 
-    //TODO: do simplify
     public boolean insertByPosition(int position, Node node) {
         if (position < 0) return false;
+        Node cNode = firstElem;
         if (position == 0) {
-            Node cNode = first;
-            first = node;
-            first.next = cNode;
+            insertInRoot(node, cNode);
             return true;
         }
-        Node cNode;
         cNode = getNodeByPosition(position);
         if (cNode == null) {
             return false;
@@ -70,18 +78,24 @@ public class LinkedList implements LinkedListInterface {
         if (next != null) {
             node.next = next;
         }
+        size++;
         return true;
     }
 
+    private void insertInRoot(Node node, Node cNode) {
+        firstElem = node;
+        firstElem.next = cNode;
+        size++;
+    }
 
-    public Node getNode(int position){
+    public Node getNode(int position) {
         checkCycle();
         return getNodeByPosition(position+1);
     }
 
     public Node getNode(Node node) {
         checkCycle();
-        Node cNode = first;
+        Node cNode = firstElem;
         while (true) {
             if (cNode == null) {
                 return null;
@@ -94,19 +108,39 @@ public class LinkedList implements LinkedListInterface {
         }
     }
 
+    public Node deleteNode(Node node) {
+        checkCycle();
+        Node cNode = firstElem;
+        Node previousNode = null;
+        for (int i = 0; i < size; i++) {
+            if (cNode != node) {
+                previousNode = cNode;
+                cNode = cNode.next;
+            } else {
+                if (previousNode == null) {
+                    firstElem = null;
+                } else {
+                    previousNode.next = cNode.next;
+                }
+                return node;
+            }
+        }
+        return null;
+    }
+
     private void checkCycle() {
         if (isEmpty()) return;
-        if (hasCycle(first)) {
+        if (hasCycle(firstElem)) {
             throw new LinkedListException("linked list contains the circle");
         }
     }
 
     private Node getNodeByPosition(int position) {
-        Node cNode = first;
+        Node cNode = firstElem;
         for (int i = 0; i < position - 1; i++) {
             if (cNode != null) {
                 cNode = cNode.next;
-            }
+            } else return null;
         }
         return cNode;
     }
