@@ -6,6 +6,7 @@ public class Node {
 
     Data data;
     Node next;
+    Node previous;
 
     public Node(int i, String s) {
         this.data = new Data(i, s);

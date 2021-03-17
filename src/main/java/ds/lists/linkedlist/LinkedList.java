@@ -6,6 +6,7 @@ public class LinkedList implements LinkedListInterface {
 
     private Node firstElem;
     private int size;
+    private Node lastElem;
 
 
     public LinkedList() {
@@ -13,6 +14,10 @@ public class LinkedList implements LinkedListInterface {
 
     public Node getFirstElem() {
         return firstElem;
+    }
+
+    public Node getLastElem() {
+        return lastElem;
     }
 
     public boolean isEmpty() {
@@ -31,21 +36,43 @@ public class LinkedList implements LinkedListInterface {
             while (cNode.next != null) {
                 cNode = cNode.next;
             }
+            node.previous = cNode;
             cNode.next = node;
         }
+        lastElem = node;
         size++;
     }
 
-    public void traverse() {
-        checkCycle();
-        if (isEmpty()) return;
-        traverse(firstElem);
+    public Node getNext(Node node) {
+        Node node1 = findNode(node);
+        if (node1 != null) {
+            if (node1.next != null) {
+                return node1.next;
+            }
+        }
+        return null;
     }
 
-    public void traverse(Node node) {
+    public Node getPrevious(Node node) {
+        Node node1 = findNode(node);
+        if (node1 != null) {
+            if (node1.previous != null) {
+                return node1.previous;
+            }
+        }
+        return null;
+    }
+
+    public void printLinkedList() {
+        checkCycle();
+        if (isEmpty()) return;
+        printLinkedList(firstElem);
+    }
+
+    private void printLinkedList(Node node) {
         System.out.println(node);
         if (node.next != null) {
-            traverse(node.next);
+            printLinkedList(node.next);
         }
     }
 
@@ -64,36 +91,41 @@ public class LinkedList implements LinkedListInterface {
 
     public boolean insertByPosition(int position, Node node) {
         if (position < 0) return false;
-        Node cNode = firstElem;
         if (position == 0) {
-            insertInRoot(node, cNode);
+            insertFirst(node);
             return true;
         }
-        cNode = getNodeByPosition(position);
-        if (cNode == null) {
-            return false;
-        }
+        Node cNode = getNodeByPosition(position);
+        if (cNode == null) return false;
+
         Node next = cNode.next;
         cNode.next = node;
+        node.previous = cNode;
         if (next != null) {
             node.next = next;
+            next.previous = node;
+        }
+        if (size == position) {
+            lastElem = node;
         }
         size++;
         return true;
     }
 
-    private void insertInRoot(Node node, Node cNode) {
+    private void insertFirst(Node node) {
+        Node cNode = firstElem;
         firstElem = node;
         firstElem.next = cNode;
+        cNode.previous = node;
         size++;
     }
 
-    public Node getNode(int position) {
+    public Node findNode(int position) {
         checkCycle();
         return getNodeByPosition(position+1);
     }
 
-    public Node getNode(Node node) {
+    public Node findNode(Node node) {
         checkCycle();
         Node cNode = firstElem;
         while (true) {
@@ -110,26 +142,41 @@ public class LinkedList implements LinkedListInterface {
 
     public Node deleteNode(Node node) {
         checkCycle();
-        Node cNode = firstElem;
-        Node previousNode = null;
-        for (int i = 0; i < size; i++) {
-            if (cNode != node) {
-                previousNode = cNode;
-                cNode = cNode.next;
-            } else {
-                if (previousNode == null) {
-                    firstElem = null;
-                } else {
-                    previousNode.next = cNode.next;
-                }
+        Node node1 = findNode(node);
+        if (node1 != null) {
+            if (node1.previous == null) {
+                removeFirst();
                 return node;
             }
+            if (node1.next == null) {
+                Node cNode = node1.previous;
+                cNode.next = null;
+                lastElem = cNode;
+                return node;
+            }
+            Node previous = node1.previous;
+            Node next = node1.next;
+            previous.next = next;
+            next.previous = previous;
+            return node;
         }
+
         return null;
     }
 
+    public void removeFirst() {
+        checkCycle();
+        Node next = firstElem.next;
+        firstElem = next;
+        next.previous = null;
+    }
+
+    public void removeLast() {
+
+    }
+
     private void checkCycle() {
-        if (isEmpty()) return;
+        if (isEmpty()) throw new LinkedListException("linked list is empty");
         if (hasCycle(firstElem)) {
             throw new LinkedListException("linked list contains the circle");
         }

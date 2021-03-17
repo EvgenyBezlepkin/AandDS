@@ -13,14 +13,13 @@ public class App {
         ll.insert(a);
         ll.insert(b);
         ll.insert(c);
-        //ll.insert(b);
-        //System.out.println(ll.hasCycle(ll.getFirst()));
-        ll.insertByPosition(1, d);
-        //ll.traverse(ll.getFirst());
-        //System.out.println(ll.getNode(5));
-        //ll.getNode(b);
-        //System.out.println(ll.size());
-        ll.deleteNode(b);
-        ll.traverse();
+
+        ll.insertByPosition(3, d);
+
+        ll.deleteNode(d);
+        //System.out.println(d.previous);
+        //System.out.println(d.next);
+        ll.printLinkedList();
+        //System.out.println(ll.getLastElem());
     }
 }
