@@ -1,7 +1,5 @@
-import ds.lists.linkedlist.LinkedList;
-import ds.lists.linkedlist.Node;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DynamicTest;
+import ds.list.linkedlist.LinkedList;
+import ds.list.linkedlist.Node;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

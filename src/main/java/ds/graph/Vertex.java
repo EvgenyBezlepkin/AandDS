@@ -1,12 +1,20 @@
 package ds.graph;
 
+import ds.Data;
+
 public class Vertex {
 
-    String label;
-    boolean wasVisited;
+    Data data;
 
-    public Vertex(String label) {
-        this.label = label;
-        this.wasVisited = false;
+    public Vertex(Data data) {
+        this.data = data;
+    }
+
+
+    public Integer printInt() {
+        return  data.i ;
+    }
+    public String printString() {
+        return  data.s ;
     }
 }

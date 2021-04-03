@@ -1,5 +1,7 @@
 package ds.graph;
 
+import ds.Data;
+
 import java.util.*;
 
 public class Graph {
@@ -12,11 +14,11 @@ public class Graph {
     // the number vertexes of the ds.graph
     private int MAX_VERTEX = 20;
     // the array of vertexes
-    private Vertex[] vertexList;
+    private ArrayList<Vertex> vertexList;
     // adjacency matrix
     private int[][] adjMat;
     // adjacency list
-    private Map<Vertex, List<Vertex>> adjLists;
+    private Map<Vertex, ArrayList<Vertex>> adjLists;
     // the current number of vertexes
     private int nVertexes;
     // helper
@@ -24,8 +26,9 @@ public class Graph {
 
 
     public Graph() {
-        vertexList = new Vertex[MAX_VERTEX];
+        vertexList = new ArrayList<>();
         //TODO: cut in half
+        // remove delimiter
         adjMat = new int[MAX_VERTEX][MAX_VERTEX];
         adjLists = new HashMap<>();
         nVertexes = 0;
@@ -34,8 +37,9 @@ public class Graph {
 
 
     Vertex addVertex(String s) {
-        Vertex v = new Vertex(s);
-        vertexList[nVertexes++] = v;
+        Vertex v = new Vertex(new Data(s));
+        vertexList.add(v);
+        nVertexes++;
         return v;
     }
 
@@ -43,10 +47,10 @@ public class Graph {
         int startI = -1;
         int endI = -1;
         for (int i = 0; i < nVertexes; i++) {
-            if (vertexList[i].label.equalsIgnoreCase(start.label)) {
+            if (vertexList.get(i).equals(start)) {
                 startI = i;
             }
-            if (vertexList[i].label.equalsIgnoreCase(end.label)) {
+            if (vertexList.get(i).equals(end)) {
                 endI = i;
             }
         }
@@ -80,8 +84,8 @@ public class Graph {
 
     void printAdjacencyList() {
         adjLists.forEach((k, v) -> {
-            System.out.print(k.label + " : ");
-            v.forEach(x -> System.out.print(x.label + " -> "));
+            System.out.print(k.printString() + " : ");
+            v.forEach(x -> System.out.print(x.printString() + " -> "));
             System.out.println();
         });
     }

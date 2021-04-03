@@ -1,4 +1,4 @@
-package ds.binary_tree;
+package ds.tree.binary_tree;
 
 public class App {
 

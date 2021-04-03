@@ -1,4 +1,4 @@
-package ds.lists.linkedlist;
+package ds.list.linkedlist;
 
 import java.util.HashSet;
 

@@ -1,4 +1,4 @@
-package ds.tree234;
+package ds.tree.tree234;
 
 import ds.Data;
 
