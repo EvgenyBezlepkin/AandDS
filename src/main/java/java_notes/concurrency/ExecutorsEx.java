@@ -18,6 +18,7 @@ public class ExecutorsEx {
         newSingleThreadExecutor(al);
         newCachedThreadPool();
         newFixedThreadPool();
+
         newSingleThreadScheduledExecutor();
         newScheduledThreadPool();
 
