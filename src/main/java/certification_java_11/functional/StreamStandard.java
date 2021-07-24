@@ -1,9 +1,7 @@
-package java_notes.functional;
+package certification_java_11.functional;
 
 import java.util.*;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class StreamStandard {

@@ -1,7 +1,6 @@
-package java_notes.concurrency.lock;
+package certification_java_11.concurrency.lock;
 
 
-import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 

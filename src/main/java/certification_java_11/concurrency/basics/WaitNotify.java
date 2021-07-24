@@ -1,6 +1,4 @@
-package java_notes.concurrency.basics;
-
-import java.util.concurrent.locks.Lock;
+package certification_java_11.concurrency.basics;
 
 public class WaitNotify {
 

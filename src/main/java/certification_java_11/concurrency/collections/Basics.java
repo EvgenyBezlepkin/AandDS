@@ -1,8 +1,7 @@
-package java_notes.concurrency.collections;
+package certification_java_11.concurrency.collections;
 
 import java.util.Map;
 import java.util.concurrent.*;
-import java.util.concurrent.locks.Lock;
 
 public class Basics{
 

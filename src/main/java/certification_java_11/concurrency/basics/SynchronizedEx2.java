@@ -1,4 +1,4 @@
-package java_notes.concurrency.basics;
+package certification_java_11.concurrency.basics;
 
 
 public class SynchronizedEx2 {

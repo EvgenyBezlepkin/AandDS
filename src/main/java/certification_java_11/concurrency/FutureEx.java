@@ -1,4 +1,4 @@
-package java_notes.concurrency;
+package certification_java_11.concurrency;
 
 import java.util.concurrent.*;
 

@@ -1,6 +1,5 @@
-package java_notes.concurrency.lock;
+package certification_java_11.concurrency.lock;
 
-import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class LockEx {

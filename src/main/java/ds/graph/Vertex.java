@@ -10,10 +10,10 @@ public class Vertex {
         this.data = data;
     }
 
-
     public Integer printInt() {
         return  data.i ;
     }
+
     public String printString() {
         return  data.s ;
     }

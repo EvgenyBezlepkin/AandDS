@@ -1,4 +1,4 @@
-package java_notes.functional;
+package certification_java_11.functional;
 
 public class OptionalEx {
 

@@ -1,8 +1,5 @@
-package java_notes.concurrency;
+package certification_java_11.concurrency;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 import java.util.concurrent.*;
 
 public class ScheduledExecutorServiceEx {
